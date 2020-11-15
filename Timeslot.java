@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 public class Timeslot {
     private Date opening;
     private Date closing;
-    public Timeslot(String timeslot){
-        setTimeSlot(timeslot);
+    public Timeslot(String timeslot, String format){
+        setTimeSlot(timeslot, format);
     }
 
     public Date getOpening (){
@@ -18,10 +18,10 @@ public class Timeslot {
         return closing;
     }
 
-    private void setTimeSlot(String timeslot){
+    private void setTimeSlot(String timeslot, String format){
         // "8:30-10:30" Time format
         String[] times = timeslot.split("-");
-        SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat parser = new SimpleDateFormat(format);
         // try catch block for ParseException
 
 
