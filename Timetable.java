@@ -82,7 +82,7 @@ class Timetable{
         String[] arr = slot.split(";");
         String day = arr[0];
         String time = arr[1];
-        Timeslot slt = new Timeslot(time);
+        Timeslot slt = new Timeslot(time,"HH:mm");
         //System.out.println(day.toLowerCase());
         (this.schedule.get(day.toLowerCase())).add(slt);
 
