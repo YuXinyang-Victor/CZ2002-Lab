@@ -39,7 +39,7 @@ public class AdminCourseController {
             System.out.println("Failed.");
     }
 
-    public void addCourseIndex(String courseCode, int newIndex, int capacity, String[] timeSlot) {
+    public void addCourseIndex(String courseCode, int newIndex, int capacity, Timetable timeSlot) {
         Course course = map.get(courseCode);
         boolean res = course.addIndex(newIndex, capacity, timeSlot);
         if (res) System.out.println("Index: " + newIndex + " added.");
