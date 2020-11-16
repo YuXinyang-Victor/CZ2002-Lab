@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class FileHandle {
+public interface FileHandle {
 
     public static List readSerializedObject(String filename) {
 		List oDetails = null;
@@ -24,13 +24,11 @@ public class FileHandle {
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
-		// print out the size
-		//System.out.println(" Details Size: " + pDetails.size());
-		//System.out.println();
+		
 		return oDetails;
 	}
 
-	public static void writeSerializedObject(String filename, List list) {
+    public static void writeSerializedObject(String filename, List list) {
 		FileOutputStream fos = null;
 		ObjectOutputStream out = null;
 		try {
@@ -43,4 +41,8 @@ public class FileHandle {
 			ex.printStackTrace();
 		}
 	}
+
+	public static void serializeToFile(){}
+	public static void deserializeFromFile() {}
+
 }
