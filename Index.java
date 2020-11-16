@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.io.Serializable;
-import java.util.Queue;
+import java.util.LinkedList;
 
 public class Index implements Comparable<Index>, Serializable{
     private List<Student> registeredStudents;
-    private Queue<Student> waitingListStudents;
+    private LinkedList<Student> waitingListStudents;
     private int indexNumber, cnt, available, capacity;
     private Course course;
 
@@ -17,6 +17,7 @@ public class Index implements Comparable<Index>, Serializable{
         indexNumber = number;
         this.capacity = capacity;
         registeredStudents = new ArrayList<>();
+        waitingListStudents = new LinkedList<>();
         cnt = 0;
         available = capacity;
         this.timeSlot = timeSlot;
@@ -42,8 +43,15 @@ public class Index implements Comparable<Index>, Serializable{
         if (res) {
             cnt--; available++;
             adminWaitlistStudent();
+            return true;
         }
-        return res;
+        else {//the student is not in the registered list (remove returns false)
+            if (waitingListStudents.contains(student)){//the student is on the waiting list
+                waitingListStudents.remove(student);//remove from waiting list
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getVacancies() {
