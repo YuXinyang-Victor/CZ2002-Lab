@@ -10,9 +10,9 @@ public class Index implements Comparable<Index>, Serializable{
     private int indexNumber, cnt, available, capacity;
     private Course course;
 
-    private String[] timeSlot;//the format of timeslot array should be:
+    private Timetable timeSlot;//the format of timeslot array should be:
     // ["Mon;8:30-10:30;SEM", "TUE;10:30-12:30;LEC"]
-    public Index(int number, int capacity, Course course, String[] timeSlot ) {
+    public Index(int number, int capacity, Course course, Timetable timeSlot ) {
         this.course = course;
         indexNumber = number;
         this.capacity = capacity;
