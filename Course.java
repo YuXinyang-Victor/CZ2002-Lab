@@ -101,7 +101,7 @@ public class Course implements Serializable{
 	}
 
 	//-------------------------------- changing index --------------------------------------
-	public boolean addIndex(int indexNo, int vac, String[] timeSlot){
+	public boolean addIndex(int indexNo, int vac, Timetable timeSlot){
 		if (indexInfo.containsKey(indexNo)) return false;
 		Index newIndex = new Index(indexNo, vac, this, timeSlot);
 		indexInfo.put(indexNo, newIndex);
