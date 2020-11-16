@@ -5,6 +5,7 @@ class Password implements Serializable{
     // association with username 
     // encryption and checking takes place
     String hashed_pass;
+    // primary key 
     String username;
 
     public Password(){ this.hashed_pass = ""; this.username = "";}

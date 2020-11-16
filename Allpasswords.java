@@ -8,7 +8,7 @@ class Allpasswords implements FileHandle{
 
     }
 
-    public List getList(){
+    public static List getList(){
         return passwordList;
     }
 
