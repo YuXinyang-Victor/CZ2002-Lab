@@ -1,4 +1,4 @@
-public class  AllCourse {
+public class  AllCourse implements FileHandle{
     private static Map<String, Course> map;
     public AllCourse() {}
     
