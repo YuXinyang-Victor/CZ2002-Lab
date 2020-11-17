@@ -10,12 +10,7 @@ import javax.mail.internet.MimeMessage;
 
 
 class Email implements Notifier {
-	final String username, password;
-	public Email(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-
+	final String username="", password="";//To be added
 	public void notify(String subject, String content, String receipients) {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -33,7 +28,7 @@ class Email implements Notifier {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(sender));
+			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(receipients)); // "to_username_a@gmail.com, to_username_b@yahoo.com"
 			message.setSubject(subject);
@@ -41,7 +36,7 @@ class Email implements Notifier {
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			System.out.println("Notification has been sent.");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
