@@ -7,8 +7,9 @@ import java.util.LinkedList;
 public class Index implements Comparable<Index>, Serializable{
     private List<Student> registeredStudents;
     private LinkedList<Student> waitingListStudents;
-    private int indexNumber, cnt, available, capacity;
+    private int indexNumber, cnt, available, capacity; //cnt counts the number of registered students.
     private Course course;
+    private static Notifier notifier;
 
     private Timetable timeSlot;//the format of timeslot array should be:
     // ["Mon;8:30-10:30;SEM", "TUE;10:30-12:30;LEC"]
@@ -21,6 +22,7 @@ public class Index implements Comparable<Index>, Serializable{
         cnt = 0;
         available = capacity;
         this.timeSlot = timeSlot;
+        if (notifier == null) notifier = new Email();
     }
 
     public boolean addStudent(Student student) {
@@ -121,9 +123,12 @@ public class Index implements Comparable<Index>, Serializable{
     }
 
     private void adminWaitlistStudent() {
+        String subject = "Course registration result";
         while (available > 0 && !waitingListStudents.isEmpty()) {
             Student student = waitingListStudents.remove();
             registeredStudents.add(student);
+            String content = "Dear " + student.getStudentName() + "\n\nYou have been added to course " + course.getCourseCode() + ", index: " + indexNumber + " successfully. ";
+            notifier.notify(subject, content, student.getEmail());
             System.out.println("Student " + student.getStudentName() + " added to course " + course.getCourseCode() + ", index: " + indexNumber + ". ");
             cnt++; available--;
         }

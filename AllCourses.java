@@ -1,6 +1,14 @@
-public class  AllCourse {
+public class  AllCourse implements FileHandle{
     private static Map<String, Course> map;
     public AllCourse() {}
+    
+    public static List readSerializedObject(String filename){
+        return FileHandle.readSerializedObject(filename);
+    }
+
+    public static void writeSerializedObject(String filename,List list){
+        FileHandle.writeSerializedObject(filename, list);
+    }
     
     public static void serializeToFile() {
         try {
