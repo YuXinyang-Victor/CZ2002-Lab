@@ -7,7 +7,7 @@ import java.util.LinkedList;
 public class Index implements Comparable<Index>, Serializable{
     private List<Student> registeredStudents;
     private LinkedList<Student> waitingListStudents;
-    private int indexNumber, cnt, available, capacity;
+    private int indexNumber, cnt, available, capacity; //cnt counts the number of registered students.
     private Course course;
 
     private Timetable timeSlot;//the format of timeslot array should be:
