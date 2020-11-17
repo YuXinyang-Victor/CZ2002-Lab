@@ -10,6 +10,7 @@ public class Student {
     private String Nationality; 
     private String MatricNo; 
     private String Password; 
+    private String Email; 
     private Map<String, Integer> CoursesRegistered; 
     private Map<String, Integer> CoursesWaitlist;
     //private Map<>
@@ -38,6 +39,14 @@ public class Student {
     
     public String getStudentPassword() {
     	return Password; 
+    }
+    
+    public String getStudentEmail() {
+    	return Email; 
+    }
+    
+    public void setStudentEmail(String E_mail) {
+        Email = E_mail; 
     }
     
     public Map<String, Integer> getCoursesRegistered() {
