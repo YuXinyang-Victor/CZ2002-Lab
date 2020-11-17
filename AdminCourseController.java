@@ -103,4 +103,20 @@ public class AdminCourseController {
         }
     }
     
+    //------------------------------helper function------------------------------
+    private void printAllVancancies(String courseCode) {
+        Course course = map.get(courseCode);
+        List<Index> indexes = course.getAllIndex();
+        for (Index i : indexes) {
+            System.out.println(i);
+        }
+    }
+
+    private int getVacByIndex(String courseCode, int indexNumber) {
+        Course course = map.get(courseCode);
+        int res = course.getIndexVacancy(indexNumber);
+        if (res < 0) System.out.println("Index number " + indexNumber + " does not belong to " + courseCode + ".");
+        return res;
+    }
+    
 }
