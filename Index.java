@@ -128,7 +128,7 @@ public class Index implements Comparable<Index>, Serializable{
             Student student = waitingListStudents.remove();
             registeredStudents.add(student);
             String content = "Dear " + student.getStudentName() + "\n\nYou have been added to course " + course.getCourseCode() + ", index: " + indexNumber + " successfully. ";
-            notifier.notify(subject, content, student.getEmail());
+            notifier.notify(subject, content, student.getStudentEmail());
             System.out.println("Student " + student.getStudentName() + " added to course " + course.getCourseCode() + ", index: " + indexNumber + ". ");
             cnt++; available--;
         }
