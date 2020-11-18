@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 public class Admin implements Serializable {
     // idea can make student and admin inherit a class called account
-    private int username_ID;
+    private String username_ID;
     private String name;
     private int age;
     private String emailID;
@@ -11,8 +11,17 @@ public class Admin implements Serializable {
     private String nationality;
     private String contact;
 
-    
-    public Admin(int adminId, String name, int age, String emailId, String gender, String nationality, String contact){
+    public Admin(String adminID){
+        this.username_ID=adminID;
+        this.name = "";
+        this.age = 0;
+        this.emailID = "";
+        this.gender = "";
+        this.nationality = "";
+        this.contact = "";
+    }
+
+    public Admin(String adminId, String name, int age, String emailId, String gender, String nationality, String contact){
         this.username_ID=adminId;
         this.name = name;
         this.age = age;
