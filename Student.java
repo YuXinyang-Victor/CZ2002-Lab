@@ -1,18 +1,18 @@
 //package sce.cz2002.yxy;
 
 import java.util.*;
+import java.io.Serializable;
 import java.time.*;
 
-public class Student {
+public class Student implements Serializable{
     private String Name; 
     private String Username; 
     private char Gender; 
     private String Nationality; 
     private String MatricNo; 
     private String Password; 
-    private String Email; 
-    private Map<String, Integer> CoursesRegistered; 
-    private Map<String, Integer> CoursesWaitlist;
+    private Map<String, Index> CoursesRegistered; 
+    private Map<String, Index> CoursesWaitlist;
     //private Map<>
     private int SumAU = 0; 
     private LocalDateTime[] AccessPeriod;  
@@ -41,15 +41,7 @@ public class Student {
     	return Password; 
     }
     
-    public String getStudentEmail() {
-    	return Email; 
-    }
-    
-    public void setStudentEmail(String E_mail) {
-        Email = E_mail; 
-    }
-    
-    public Map<String, Integer> getCoursesRegistered() {
+    public Map<String, Index> getCoursesRegistered() {
     	return CoursesRegistered; 
     }
     
@@ -57,7 +49,7 @@ public class Student {
     	CoursesRegistered.entrySet().forEach(entry->{System.out.println(entry.getKey()); });
     }
     
-    public Map<String, Integer> getCoursesWaitlist() {
+    public Map<String, Index> getCoursesWaitlist() {
     	return CoursesWaitlist; 
     	
     }
@@ -70,4 +62,21 @@ public class Student {
     	AccessPeriod = accessperiod; 
     }
     
+    public void addtoCoursesRegistered(Index i){
+        this.CoursesRegistered.put(i.getCourseCode(),i);
+    }
+
+    public void addtoCoursesWaitlisted(Index i){
+        this.CoursesWaitlist.put(i.getCourseCode(),i);
+
+    }
+
+    public void delfromCoursesRegistered( Index i){
+        this.CoursesRegistered.remove(i.getCourseCode());
+    }
+
+    public void delfromCoursesWaitlisted(Index i){
+        this.CoursesWaitlist.remove(i.getCourseCode());
+
+    }
 }
