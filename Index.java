@@ -133,4 +133,9 @@ public class Index implements Comparable<Index>, Serializable{
             cnt++; available--;
         }
     }
+    
+    public String getCourseCode(){
+        return this.course.getCourseCode();
+    }
+}
 }
