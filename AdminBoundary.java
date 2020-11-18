@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 public class AdminBoundary {
     
@@ -85,13 +86,11 @@ public class AdminBoundary {
             String school = sc.next();
             List <CourseType> availableType = new ArrayList<CourseType>();
 
-            System.out.print("Enter available course types (Enter 0 to stop): ");
-
-            while (true){
-                String str = sc.next();
-                if (str == "0")
-                    break;
-                availableType.add(CourseType.valueOf(str));
+            System.out.print("Enter available course types seprated by , (no spaces): ");
+            String str = sc.next();
+            String[] arr = str.split(",");
+            for (String st: arr){
+                availableType.add(CourseType.valueOf(st));
             }
 
             System.out.print("Enter AU: ");
@@ -167,14 +166,10 @@ public class AdminBoundary {
                         int newIndex  = sc.nextInt();
                         System.out.print("Enter new Index number capacity: ");
                         int cap  = sc.nextInt();
-                        List <String> timeslots = new ArrayList<String>();
-                        System.out.print("Enter Timetable (Format : Mon;8:30-10:30;SEM;Wk_2_13/Wk_1_3_5/Wk_2_4_6;HWLAB3) \n(Enter 0 to stop): ");
-                        while (true){
-                            String timeslot = sc.next();
-                            if (timeslot == "0")
-                            break;
-                            timeslots.add(timeslot);
-                        }
+                        System.out.print("Enter Timetable (Time slot Format : Mon;8:30-10:30;SEM;All/Odd/Even;HWLAB3 ) \n Enter timeslots seprated by comma (no spaces)\n");
+                        String str = sc.next();
+                        String[] time = str.split(",");
+                        List<String> timeslots = Arrays.asList(time);
                         Timetable tt = new Timetable();
                         tt.addSlots(timeslots);
                         acc.addCourseIndex(code, newIndex, cap,tt);
@@ -182,7 +177,7 @@ public class AdminBoundary {
                         }
                         catch(Exception e){
                             flag = true;
-                            System.out.println("Enter valid code, index number,vacancy, timeslots in the said format");
+                            System.out.println(e.getMessage());
                         }   
                         break;
                 case 5:try{
