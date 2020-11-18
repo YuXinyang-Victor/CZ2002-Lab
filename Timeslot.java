@@ -1,9 +1,10 @@
 //import java.sql.Time;
 import java.util.Date;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Timeslot {
+public class Timeslot implements Serializable{
     private Date opening;
     private Date closing;
     private String venue;
