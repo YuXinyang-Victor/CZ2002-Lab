@@ -8,7 +8,7 @@ public class StudentCourseController {
     Map<String, Course> map;
 
     public StudentCourseController() {
-        map = AllCourse.deserializeFromFile();
+        AllCourse.deserializeFromFile();
         map = AllCourse.getMap();
     }
 
