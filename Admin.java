@@ -32,7 +32,7 @@ public class Admin implements Serializable {
 
     }
 //---------------------------------getter methods--------------------------------------------------------------
-    public int getUsername(){
+    public String getUsername(){
         return this.username_ID;
     }
 
