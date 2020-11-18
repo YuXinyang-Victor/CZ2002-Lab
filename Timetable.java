@@ -1,6 +1,8 @@
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 /*We can add printTimeTable function as an extra feature */
@@ -33,7 +35,10 @@ class Timetable{
             for (Timeslot t1slot: t1slots){
                 for (Timeslot tslot: slots){
                     if (tslot.checkClash(t1slot)){
-                        System.out.println(t1key+": "+tslot.strTimeslot()+" clashes with "+t1slot.strTimeslot());
+                        System.out.println("The following slots clash on "+t1key.toUpperCase());
+                        System.out.println();
+                        tslot.printTimeslot();
+                        t1slot.printTimeslot();
                         flag = true;
                     }
                 }
@@ -69,7 +74,7 @@ class Timetable{
 
 
 //-------------adding slots to timetable-----------------------------
-    public void addSlots(String[] slots){
+    public void addSlots(List<String> slots){
         for (String slot: slots){
             this.addSlot(slot);
         }
@@ -78,27 +83,31 @@ class Timetable{
     private void addSlot(String slot){
 
 
-        // format : "Mon;8:30-10:30;SEM"
+        // format : "Mon;8:30-10:30;SEM;All;HWLAB3"
         String[] arr = slot.split(";");
         String day = arr[0];
         String time = arr[1];
-        Timeslot slt = new Timeslot(time,"HH:mm");
+        String classType = arr[2];
+        String remarks = arr[3];
+        String venue = arr[4];
+        Timeslot slt = new Timeslot(time,"HH:mm",classType,remarks,venue);
         //System.out.println(day.toLowerCase());
         (this.schedule.get(day.toLowerCase())).add(slt);
 
 
     }
 
-//-------------print Timetable----------------------------------------
+//-------------print Course/Index Timetable only----------------------------------------
     public void printTimeTable(){
         for (String day : this.schedule.keySet()) {
-            System.out.print(day+": ");
+            if (this.schedule.get(day).size()!=0){
+            System.out.println(day.toUpperCase()+": ");
             for (Timeslot tt: this.schedule.get(day)){
-                System.out.print("["+tt.strTimeslot()+"] ");
+                tt.printTimeslot();
             }
             System.out.println();
           }
+        }
     }
-
 
 }

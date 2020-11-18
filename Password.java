@@ -4,16 +4,19 @@ import java.nio.charset.StandardCharsets;
 class Password implements Serializable{
     // association with username 
     // encryption and checking takes place
-    String hashed_pass;
+    private String hashed_pass;
     // primary key 
-    String username;
+    private String username;
+    // domain = 1 for student and domain = 0 for admin
+    private int domain;
 
     public Password(){ this.hashed_pass = ""; this.username = "";}
 
 
-    public Password(String username, String raw){
+    public Password(String username, String raw, int domain){
         this.username = username;
         this.hashed_pass = hash(raw);
+        this.domain = domain;
 
     }
 
@@ -25,6 +28,21 @@ class Password implements Serializable{
         this.hashed_pass = hash(password);
     }
 
+    public void setDomain(int domain){
+        this.domain = domain;
+    }
+
+    public int getDomain(){
+        return this.domain;
+    }
+
+    public String getPassword(){
+        return this.hashed_pass;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
 
     private String hash(String raw){
         try{
@@ -49,10 +67,11 @@ class Password implements Serializable{
         }
         return hexString.toString();
     }
-
-
-    public boolean isEqual(Password p2){
-        if (this.hashed_pass.compareTo(p2.hashed_pass) == 0 && (this.username.toUpperCase()).compareTo(p2.username.toUpperCase())==0)
+    // can use it for polymorphism and LSP
+    @Override
+    public boolean equals(Object p1){
+        Password p2 = (Password) p1;
+        if (this.hashed_pass.compareTo(p2.getPassword()) == 0 && (this.username.toUpperCase()).compareTo(p2.getUsername().toUpperCase())==0 && this.domain == p2.getDomain())
             return true;
         else
             return false;
