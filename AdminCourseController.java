@@ -11,11 +11,6 @@ public class AdminCourseController {
         AllCourse.deserializeFromFile();
         map = AllCourse.getMap();
     }
-
-    public AdminCourseController(Map<String, Course> map) {
-        this.map = map;
-        
-    }
     
     //------------------------------for admin-----------------------------------
     public void updateCourseName(String courseCode, String newName) {
