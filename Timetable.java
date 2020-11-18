@@ -1,6 +1,7 @@
 
 import java.util.HashMap;
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
 /*We can add printTimeTable function as an extra feature */
 
 
-class Timetable{
+class Timetable implements Serializable{
     private Map<String, List<Timeslot>> schedule = new HashMap <String, List<Timeslot>>();
 
     public Timetable(){
@@ -24,11 +25,15 @@ class Timetable{
 
 
     }
+
+    public Map<String, List<Timeslot>> getSchedule(){
+        return this.schedule;
+    }
 //-------------time table clash------------------------------------
     public boolean checkClash(Timetable t1){
         boolean flag = false;
 
-        for (Map.Entry<String, List<Timeslot>> entry : (t1.schedule).entrySet()) {
+        for (Map.Entry<String, List<Timeslot>> entry : (t1.getSchedule()).entrySet()) {
             String t1key = entry.getKey();
             List<Timeslot> t1slots = entry.getValue();
             List<Timeslot> slots = this.schedule.get(t1key);
@@ -49,7 +54,7 @@ class Timetable{
     }
 //------------updating student timetable (only for student class)--------------------------
     public void addTimetable(Timetable t1){
-        for (Map.Entry<String, List<Timeslot>> entry : (t1.schedule).entrySet()) {
+        for (Map.Entry<String, List<Timeslot>> entry : (t1.getSchedule()).entrySet()) {
             String t1key = entry.getKey();
             List<Timeslot> t1slots = entry.getValue();
             for (Timeslot t1slot: t1slots){
@@ -59,7 +64,7 @@ class Timetable{
     }
 
     public void delTimetable(Timetable t1){
-        for (Map.Entry<String, List<Timeslot>> entry : (t1.schedule).entrySet()) {
+        for (Map.Entry<String, List<Timeslot>> entry : (t1.getSchedule()).entrySet()) {
             String t1key = entry.getKey();
             List<Timeslot> t1slots = entry.getValue();
             List<Timeslot> slots = this.schedule.get(t1key);
