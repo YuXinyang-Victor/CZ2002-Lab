@@ -11,10 +11,6 @@ public class StudentCourseController {
         AllCourse.deserializeFromFile();
         map = AllCourse.getMap();
     }
-
-    public StudentCourseController(Map<String, Course> map) {
-        this.map = map;
-    }
     
         //------------------------------for student----------------------------------
     public boolean addStudent(String courseCode, int indexNumber, Student student) {
