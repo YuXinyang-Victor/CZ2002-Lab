@@ -10,7 +10,8 @@ public class Student implements Serializable{
     private char Gender; 
     private String Nationality; 
     private String MatricNo; 
-    private String Password; 
+    private String Password;
+    private String StudentEmail;
     private Map<String, Index> CoursesRegistered; 
     private Map<String, Index> CoursesWaitlist;
     //private Map<>
@@ -44,6 +45,8 @@ public class Student implements Serializable{
     public Map<String, Index> getCoursesRegistered() {
     	return CoursesRegistered; 
     }
+
+    public String getStudentEmail(){ return StudentEmail;}
     
     public void printCoursesRegistered() {
     	CoursesRegistered.entrySet().forEach(entry->{System.out.println(entry.getKey()); });

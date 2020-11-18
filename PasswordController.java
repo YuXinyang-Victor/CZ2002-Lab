@@ -11,12 +11,12 @@ public class PasswordController {
 
 //-----------------for studentController and AdminController-----------------
 
-    public boolean checkPassword(Password tobeChecked){
-        for (Object pass: passwordList){
-            Password p = (Password) pass;
-            if (p.isEqual(tobeChecked))
-                return true;
-        }
-        return false;
-    }
+//    public boolean checkPassword(Password tobeChecked){
+//        for (Object pass: passwordList){
+//            Password p = (Password) pass;
+//            if (p.isEqual(tobeChecked))
+//                return true;
+//        }
+//        return false;
+//    }
 }
