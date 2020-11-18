@@ -53,8 +53,8 @@ public class  AllCourse implements FileHandle{
         return map;
     }
     
-    public static void setMap(Map<String, Course> map) {
-        this.map = map;
+    public static void setMap(Map<String, Course> thisMap) {
+        map = thisMap;
     }
     
 }
