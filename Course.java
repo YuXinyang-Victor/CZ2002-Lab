@@ -201,46 +201,14 @@ public class Course implements Serializable{
 	public boolean addCourseType(CourseType courseType) {
 		if (availableType.contains(courseType)) return false;
 		availableType.add(courseType);
+		System.out.println("Course Type added successfully.");
 		return true;
 	}
 
 	public boolean deleteCourseType(CourseType courseType) {
 		if (!availableType.contains(courseType)) return false;
 		availableType.remove(courseType);
+		System.out.println("Course Type deleted successfully.");
 		return true;
 	}
-
-
-	/*
-	// -----------------------------for student operation------------------------------------
-	// for student, to register a course,
-	// return true if successful registered, otherwise return false (no enough vacancy, clash...)
-	public boolean regCourse(Student stud, String courseCode){
-	}
-
-	// for student, to drop a course
-	public void dropCourse(Student stud, String courseCode){
-
-	}
-
-	// for student, to check/print course registered
-	public void displayCourseRegistered(Student stud) {
-
-	}
-
-	// these following methods done in Index class?
-	// for student, change Index of a course
-	// return true if successful changed, otherwise return false (no enough vacancy, clash...)
-	public boolean changeCourseIndex(){
-	}
-
-	// for student, swap Indes with another student
-	public void swapCourseIndex() {
-
-
-
-	// for admin, to update a course
-	public void updateCourse(String cName){
-		// update course code, school, index numbers and vacancy
-	}*/
 }
