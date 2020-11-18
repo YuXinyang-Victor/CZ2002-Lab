@@ -30,9 +30,11 @@ public class Index implements Comparable<Index>, Serializable{
         if (available == 0) {
             waitingListStudents.add(student);
             System.out.println("Added to wait list");
+            student.addtoCoursesWaitlisted(this);
             return true;
         }
         registeredStudents.add(student);
+        student.addtoCoursesRegistered(this);
         cnt++;
         available--;
         return true;
@@ -45,11 +47,13 @@ public class Index implements Comparable<Index>, Serializable{
         if (res) {
             cnt--; available++;
             adminWaitlistStudent();
+            student.delfromCoursesRegistered(this);
             return true;
         }
         else {//the student is not in the registered list (remove returns false)
             if (waitingListStudents.contains(student)){//the student is on the waiting list
                 waitingListStudents.remove(student);//remove from waiting list
+                student.delfromCoursesWaitlisted(this);
                 return true;
             }
         }
@@ -127,6 +131,7 @@ public class Index implements Comparable<Index>, Serializable{
         while (available > 0 && !waitingListStudents.isEmpty()) {
             Student student = waitingListStudents.remove();
             registeredStudents.add(student);
+            student.addtoCoursesRegistered(this);
             String content = "Dear " + student.getStudentName() + "\n\nYou have been added to course " + course.getCourseCode() + ", index: " + indexNumber + " successfully. ";
             notifier.notify(subject, content, student.getStudentEmail());
             System.out.println("Student " + student.getStudentName() + " added to course " + course.getCourseCode() + ", index: " + indexNumber + ". ");
