@@ -10,8 +10,8 @@ import javax.mail.internet.MimeMessage;
 
 
 class Email implements Notifier {
-	final String username="", password="";//To be added
-	public void notify(String subject, String content, String receipients) {
+	private final String username="", password="";//To be added
+	public void notify(String subject, String content, String recepients) {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");

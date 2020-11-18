@@ -80,6 +80,8 @@ public class Index implements Comparable<Index>, Serializable{
     public int getIndexNumber() {return indexNumber;}
 
     public int getCapacity() {return capacity;}
+    
+    public String getCourseCode(){return this.course.getCourseCode();}
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
@@ -139,8 +141,4 @@ public class Index implements Comparable<Index>, Serializable{
         }
     }
     
-    public String getCourseCode(){
-        return this.course.getCourseCode();
-    }
-}
 }

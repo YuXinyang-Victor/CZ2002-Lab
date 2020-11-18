@@ -5,15 +5,11 @@ import java.io.*;
 import java.util.*;
 
 public class StudentCourseController {
-    Map<String, Course> map;
+    private Map<String, Course> map;
 
     public StudentCourseController() {
         AllCourse.deserializeFromFile();
         map = AllCourse.getMap();
-    }
-
-    public StudentCourseController(Map<String, Course> map) {
-        this.map = map;
     }
     
         //------------------------------for student----------------------------------
