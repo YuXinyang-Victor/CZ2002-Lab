@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class AdminCourseController {
-    Map<String, Course> map;
+    private Map<String, Course> map;
 
     public AdminCourseController() {
         AllCourse.deserializeFromFile();
