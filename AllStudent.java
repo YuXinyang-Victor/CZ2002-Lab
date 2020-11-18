@@ -24,7 +24,7 @@ public class AllStudent implements FileHandle{
             out.writeObject(studentMap);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in courseInfo.ser");
+            System.out.printf("Serialized data is saved in Student.ser");
             }
         } catch (IOException i) {
             i.printStackTrace();
@@ -32,7 +32,7 @@ public class AllStudent implements FileHandle{
     }
     public static void deserializeFromFile() {
         try {
-            FileInputStream fileIn = new FileInputStream("courseInfo.ser");
+            FileInputStream fileIn = new FileInputStream("Student.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             studentMap =(Map<String, Student>) in.readObject();
             in.close();

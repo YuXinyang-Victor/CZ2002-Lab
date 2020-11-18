@@ -6,12 +6,14 @@ public class AdminBoundary {
     
     private List adminList;
     private AdminCourseController acc;
+    private AdminStudentController asc;
     private Scanner sc;
 
-    public AdminBoundary(AdminCourseController acc){
+    public AdminBoundary(AdminCourseController acc, AdminStudentController asc){
         AllAdmins.deserializeFromFile();
         adminList = AllAdmins.getList();
         this.acc = acc;
+        this.asc = asc;
         this.sc = new Scanner(System.in);
     }
 
@@ -30,10 +32,10 @@ public class AdminBoundary {
         try{
         System.out.println ("---------------Editing access period---------------");
         System.out.print("Enter Matric No: ");
-        String matricNo = sc.next();
-        System.out.print("Enter new Access period :\n Format: dd/mm/yyyy HH:mm-dd/mm/yyyy HH:mm \n");
-        String access = sc.next();
-        AdminStudentController.editAccessPeriod(matricNo, access);
+        String matricNo = sc.nextLine();
+        System.out.print("Enter new Access period :\n Format: yyyy-MM-dd HH:mm=yyy-MM-dd HH:mm \n");
+        String access = sc.nextLine();
+        asc.editAccessPeriod(matricNo, access);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -52,14 +54,14 @@ public class AdminBoundary {
 
             System.out.print("Enter gender (Male/female): ");
             String gender = sc.next();
-            if (gender.toUpperCase() == "MALE"){
+            if (gender.toUpperCase().compareTo( "MALE")==0){
                 Student s = new Student(name, '1', nation, matric);
-                AdminStudentController.addStudent(s);
+                asc.addStudent(s);
             }
             else{
-                if (gender.toUpperCase() == "FEMALE"){
+                if (gender.toUpperCase().compareTo( "FEMALE")==0){
                     Student s = new Student(name, '0', nation, matric);
-                    AdminStudentController.addStudent(s);
+                    asc.addStudent(s);
                 }
                 else{
                     System.out.println("Invalid gender. Re-enter everything");
@@ -166,7 +168,7 @@ public class AdminBoundary {
                         int newIndex  = sc.nextInt();
                         System.out.print("Enter new Index number capacity: ");
                         int cap  = sc.nextInt();
-                        System.out.print("Enter Timetable (Time slot Format : Mon;8:30-10:30;SEM;All/Odd/Even;HWLAB3 ) \n Enter timeslots seprated by comma (no spaces)\n");
+                        System.out.print("Enter Timetable (Time slot Format : Mon;8:30-10:30;SEM;Wk_2_13/Wk_1_3_5/Wk_2_4_6;HWLAB3 ) \n Enter timeslots seprated by comma (no spaces)\n");
                         String str = sc.next();
                         String[] time = str.split(",");
                         List<String> timeslots = Arrays.asList(time);
